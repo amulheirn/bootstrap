@@ -11,5 +11,4 @@ This module is (initially) Junos only.  It performs the following things:
 Password, management interface, address/mask are all mandatory elements which must be passed as command-line arguments.
 The default route is optional. 
 
-`usage: bootstrap2.py [-h] -p PASSWORD -i INTERFACE -a ADDRESS [-r ROUTE]
-bootstrap2.py: error: argument -p/--password is required`
+` usage: bootstrap2.py [-h] -p PASSWORD -i INTERFACE -a ADDRESS [-r ROUTE]`
