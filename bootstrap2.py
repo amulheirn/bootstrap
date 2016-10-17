@@ -133,13 +133,6 @@ else:
                 tn.write("cli\n")
                 print tn.read_until(">")
 
-#            # Get the hardware and version
-#            print "** getting info from device"
-#            tn.write("show chassis hardware\n")
-#            HW = tn.read_until(">")
-#            tn.write("show version\n")
-#            VER = tn.read_until(">")
-#            tn.write("exit\n")
             writeConfig()
             print "Device has been configured with IP address %s and a password of %s" % (args.address, args.password)
             tn.close()
