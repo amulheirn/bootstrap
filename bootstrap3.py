@@ -11,7 +11,7 @@ import argparse
 
 
 # Variables
-HOST = "192.168.30.10"
+TERMSERV = "192.168.30.10"
 PORT = "2001"
 USER = "root"
 PASS = "Imtech"
@@ -23,8 +23,8 @@ VER = ""
 
 # Parse some arguments from the command-line
 parser = argparse.ArgumentParser(description="Bootstrap program for setting IP and root password on Junos")
-#parser.add_argument('-t', '--termserv', help='IPv4 address of the terminal server', required=True)
-#parser.add_argument('-s', '--serial', help='Serial line to use (e.g. 2001)', required=True)
+parser.add_argument('-t', '--termserv', help='IPv4 address of the terminal server', required=True)
+parser.add_argument('-s', '--serial', help='Serial line to use (e.g. 2001)', required=True)
 parser.add_argument('-p', '--password', help='Root user password to be put onto device', required=True)
 parser.add_argument('-i', '--interface', help='Interface to be used as management for pre-staging', required=True)
 parser.add_argument('-a', '--address', help='IPv4 address AND mask to put on the interface (e.g. 192.168.1.1/24)', required=True)
@@ -99,10 +99,10 @@ def writeConfig():
 
 
 
-# Connect to the host
+# Connect to the TERMSERV
 try:
-  print "** connecting to %s on port %s..." % (HOST, PORT)
-  tn = telnetlib.Telnet(HOST, PORT)
+  print "** connecting to %s on port %s..." % (TERMSERV, PORT)
+  tn = telnetlib.Telnet(args.termserv, args.serial)
 
 except socket.error:
   print "** Could not connect!"

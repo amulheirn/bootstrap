@@ -24,7 +24,7 @@ parser = argparse.ArgumentParser(description="Bootstrap program for setting IP a
 #parser.add_argument('-s', '--serial', help='Serial line to use (e.g. 2001)', required=True)
 parser.add_argument('-p', '--password', help='Root user password to be put onto device', required=True)
 parser.add_argument('-i', '--interface', help='Interface to be used as management for pre-staging', required=True)
-parser.add_argument('-a', '--address', help='IPv4 address and mask to put on the interface (e.g. 192.168.1.1/24)', required=True)
+parser.add_argument('-a', '--address', help='IPv4 address AND mask to put on the interface (e.g. 192.168.1.1/24)', required=True)
 parser.add_argument('-r', '--route', help='Default gateway', required=False)
 args = parser.parse_args()
 
@@ -80,6 +80,9 @@ def writeConfig():
     tn.read_until("#")
     # Set a static route:
     tn.write("set routing-options static route 0/0 next-hop " + args.route + "\n")
+    tn.read_until("#")
+    # Enable SSH so Ansible can do its stuff:
+    tn.write("set system services ssh\n")
     tn.read_until("#")
     print "** Applying config"
     tn.write("commit and-quit\n")
