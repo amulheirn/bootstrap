@@ -13,8 +13,8 @@ import argparse
 # Variables
 TERMSERV = "192.168.30.10"
 PORT = "2001"
-USER = "root"
-PASS = "Imtech"
+USER = "DUMMY"
+PASS = "DUMMY"
 ERROR = "FALSE"
 PASSPROMPT = ".*assword\:"  # Check for presence of password prompt
 PASSFAIL = ".*incorrect"    # was the password wrong?

@@ -1,5 +1,6 @@
+## Script used for testing only:
 ## Logs out of device on term server line
-
+## Useful when bootstrap script fails and leaves the device logged in.
 import getpass
 import sys
 import telnetlib
